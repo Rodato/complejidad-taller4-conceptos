@@ -159,6 +159,106 @@ def red_pyvis(
     return net.generate_html(notebook=False)
 
 
+def red_plotly(G: nx.DiGraph, altura: int = 650) -> go.Figure:
+    """Visualización 100% estática de la red completa con Plotly.
+
+    Layout pre-computado con nx.spring_layout. No hay simulación física
+    ni en cliente ni en servidor — el usuario puede hacer pan y zoom pero
+    los nodos no se mueven por sí solos.
+    """
+    n_nodos = G.number_of_nodes()
+    if n_nodos == 0:
+        return go.Figure().update_layout(title="(red vacía)")
+
+    pos = nx.spring_layout(
+        G,
+        seed=42,
+        k=3.0 / (n_nodos ** 0.5),
+        iterations=200,
+    )
+
+    edge_x, edge_y = [], []
+    for u, v in G.edges():
+        x0, y0 = pos[u]
+        x1, y1 = pos[v]
+        edge_x.extend([x0, x1, None])
+        edge_y.extend([y0, y1, None])
+    edge_trace = go.Scatter(
+        x=edge_x,
+        y=edge_y,
+        mode="lines",
+        line=dict(width=0.4, color="#bbb"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
+    grados_dict = {n: G.in_degree(n) + G.out_degree(n) for n in G.nodes}
+    g_max = max(grados_dict.values()) if grados_dict else 1
+
+    traces_por_tipo = {}
+    for tipo in ("banco", "urbanizadora", "familia", "individuo"):
+        traces_por_tipo[tipo] = {"x": [], "y": [], "hover": [], "size": []}
+
+    for n, attrs in G.nodes(data=True):
+        tipo = attrs.get("tipo", "individuo")
+        d = grados_dict[n]
+        x, y = pos[n]
+        size = 6 + (d / max(1, g_max)) * 25
+        hover = (
+            f"<b>{attrs.get('nombre', str(n))}</b><br>"
+            f"tipo: {tipo}<br>"
+            f"grado: {d} (in={G.in_degree(n)}, out={G.out_degree(n)})"
+        )
+        bucket = traces_por_tipo[tipo]
+        bucket["x"].append(x)
+        bucket["y"].append(y)
+        bucket["hover"].append(hover)
+        bucket["size"].append(size)
+
+    label_es = {
+        "banco": "Bancos",
+        "urbanizadora": "Urbanizadoras",
+        "familia": "Familias notables",
+        "individuo": "Individuos",
+    }
+
+    node_traces = []
+    for tipo, data in traces_por_tipo.items():
+        if not data["x"]:
+            continue
+        node_traces.append(
+            go.Scatter(
+                x=data["x"],
+                y=data["y"],
+                mode="markers",
+                marker=dict(
+                    size=data["size"],
+                    color=COLOR_POR_TIPO[tipo],
+                    line=dict(width=0.5, color="#333"),
+                ),
+                hovertext=data["hover"],
+                hoverinfo="text",
+                name=label_es[tipo],
+            )
+        )
+
+    fig = go.Figure(
+        data=[edge_trace, *node_traces],
+        layout=go.Layout(
+            showlegend=True,
+            legend=dict(orientation="h", y=-0.05),
+            hovermode="closest",
+            margin=dict(b=20, l=10, r=10, t=10),
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            plot_bgcolor="white",
+            height=altura,
+        ),
+    )
+    fig.update_layout(dragmode="pan")
+    return fig
+
+
 def hist_grado(grados, k_promedio: float | None = None) -> go.Figure:
     fig = go.Figure()
     arr = np.asarray(list(grados), dtype=float)

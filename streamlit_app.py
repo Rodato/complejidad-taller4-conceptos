@@ -369,19 +369,17 @@ def tab_red(G):
         "Antes de calcular cualquier medida, **mira la red**. "
         "Esta es la base sobre la que harás los 9 ejercicios."
     )
-    col1, col2, col3, col4 = st.columns(4)
-    col1.markdown("🔵 **Bancos**")
-    col2.markdown("🔴 **Urbanizadoras**")
-    col3.markdown("🟠 **Familias notables**")
-    col4.markdown("⚪ **Individuos**")
     st.caption(
-        "Arrastra los nodos para moverlos · Acerca con la rueda del mouse · "
+        "Acerca con la rueda del mouse · Arrastra el fondo para mover la vista · "
         "Pasa el cursor sobre un nodo para ver su nombre, tipo y grado · "
         "El tamaño del nodo es proporcional a su grado total · "
-        "El grosor de la arista es proporcional al valor (en log) de la transacción"
+        "Doble clic para resetear la vista"
     )
-    html = v.red_pyvis(G, altura=650, mostrar_label_desde_grado=10)
-    components.html(html, height=680, scrolling=False)
+    st.plotly_chart(
+        v.red_plotly(G, altura=650),
+        width="stretch",
+        config={"scrollZoom": True, "displayModeBar": True},
+    )
 
     st.divider()
     st.markdown("### Observa y anota")
