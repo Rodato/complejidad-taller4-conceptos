@@ -60,7 +60,13 @@ def red_pyvis(
     pos = None
     if layout_precomputado:
         try:
-            pos = nx.spring_layout(G, seed=42, k=1.5 / (G.number_of_nodes() ** 0.5))
+            n_nodos = G.number_of_nodes()
+            pos = nx.spring_layout(
+                G,
+                seed=42,
+                k=3.0 / (n_nodos ** 0.5),
+                iterations=200,
+            )
         except Exception:
             pos = None
 
@@ -110,15 +116,20 @@ def red_pyvis(
         )
 
     if layout_precomputado and pos is not None:
+        net.toggle_physics(False)
         opciones = """
         {
-          "physics": {"enabled": false},
+          "physics": {
+            "enabled": false,
+            "stabilization": {"enabled": false, "iterations": 0, "fit": false}
+          },
           "interaction": {
             "hover": true, "tooltipDelay": 100, "navigationButtons": true,
             "dragNodes": true, "zoomView": true, "dragView": true
           },
           "nodes": {"shape": "dot", "scaling": {"min": 4, "max": 35}},
-          "edges": {"smooth": {"enabled": false}}
+          "edges": {"smooth": {"enabled": false}},
+          "layout": {"improvedLayout": false}
         }
         """
     else:
