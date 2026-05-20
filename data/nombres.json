@@ -1,0 +1,66 @@
+{
+  "bancos": [
+    "Banco Agrario Hipotecario",
+    "Banco Central Hipotecario",
+    "Banco de Bogotá",
+    "Banco de Colombia",
+    "Caja Agraria",
+    "Banco Comercial Antioqueño",
+    "Banco Industrial Colombiano",
+    "Caja de Crédito Agrario"
+  ],
+  "urbanizadoras": [
+    "Sociedad Urbanizadora Colombiana",
+    "Compañía Central de Construcciones SA",
+    "Urbanización Versalles SA",
+    "Compañía Urbanizadora del Sur",
+    "Constructora Granada SA"
+  ],
+  "familias_notables": [
+    "Garcés",
+    "Caicedo",
+    "Borrero",
+    "Zawadzky",
+    "Lloreda",
+    "Sinisterra",
+    "Eder",
+    "Sarria",
+    "Velasco",
+    "Holguín",
+    "Patiño",
+    "Cabal",
+    "Cuervo",
+    "Hurtado",
+    "Domínguez"
+  ],
+  "apellidos_comunes": [
+    "Martínez", "Villegas", "Mejía", "Vélez", "García", "Vinasco", "Tejada",
+    "Jaramillo", "Barona", "Quintana", "Serna", "Forrente", "Núñez", "Castro",
+    "Rojas", "Zambrano", "Hoyos", "Torres", "León", "Díaz", "Uribe", "Robledo",
+    "Collazos", "Rincón", "Ossa", "Rivera", "Córdoba", "Castillo", "Navaz",
+    "Gasca", "Barney", "Cuellar", "Hornaza", "Herrera", "González", "Rengifo",
+    "Balcázar", "Carvajal", "Prieto", "Lizcano", "Sandoval", "Aguilar", "Bravo",
+    "Cifuentes", "Delgado", "Escobar", "Franco", "Gómez", "Henao", "Iragorri",
+    "Jiménez", "Klinger", "López", "Mosquera", "Nieto", "Ortiz", "Pérez",
+    "Restrepo", "Salazar", "Tobón", "Vargas", "Wills", "Yepes", "Zúñiga",
+    "Arango", "Botero", "Cardona", "Duque", "Echeverri", "Fajardo", "Giraldo",
+    "Hincapié", "Isaza", "Jaramillo", "Lemos", "Mejía", "Naranjo", "Ospina",
+    "Posada", "Quintero", "Ramírez", "Sánchez", "Trujillo", "Urrea", "Vidal",
+    "Aristizábal", "Bernal", "Cortés", "Dávila", "Espinosa", "Forero", "Galindo",
+    "Hernández", "Ibáñez", "Lara", "Medina", "Niño", "Olarte", "Páez", "Reyes"
+  ],
+  "nombres_hombres": [
+    "Jorge", "Sebastián", "Francisco", "Carlos", "Manuel", "Rafael", "Alberto",
+    "Eduardo", "Ignacio", "Antonio", "Pedro", "Luis", "Ricardo", "Alfonso",
+    "Mario", "Ernesto", "Daniel", "Gabriel", "Javier", "Andrés", "Felipe",
+    "José", "Camilo", "Hernán", "Tomás", "Hugo", "Álvaro", "Octavio", "Joaquín",
+    "Adolfo", "Benjamín", "Diego", "Esteban", "Fernando", "Gustavo"
+  ],
+  "nombres_mujeres": [
+    "Isabel", "María", "Ana", "Carmen", "Mercedes", "Sofía", "Elena",
+    "Beatriz", "Lucía", "Margarita", "Teresa", "Inés", "Josefina", "Emilia",
+    "Dolores", "Julia", "Susana", "Aída", "Bertilda", "Olga", "Concepción",
+    "Soledad", "Elisa", "Enriqueta", "Esperanza", "Cecilia", "Camila",
+    "Adriana", "Luisa", "Patricia", "Clara", "Rosario", "Gloria", "Magdalena"
+  ]
+}
