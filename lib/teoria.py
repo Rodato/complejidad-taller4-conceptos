@@ -52,7 +52,7 @@ cercano al promedio, o hay unos pocos con muchísimos más vínculos que el rest
 # --- Ejercicio 2 ---
 EJ2_ENUNCIADO = "Encuentre la **distribución de grado** $p_k$ de la misma red."
 EJ2_FORMULA = r"p_k = \frac{N_k}{N}"
-EJ2_INTRO = """
+EJ2_INTRO = r"""
 La distribución de grado $p_k$ es la fracción de nodos en la red que tienen
 exactamente $k$ vínculos. Mientras ⟨k⟩ da un número, $p_k$ da una **forma**.
 
@@ -64,7 +64,7 @@ Dos formas típicas:
 Visualizamos $p_k$ en escala lineal y en **log-log**: una línea recta en log-log
 es la firma de una ley de potencia, con pendiente $-\gamma$.
 """
-EJ2_INTERPRETACION = """
+EJ2_INTERPRETACION = r"""
 **Para pensar:** ¿qué dice la **cola** de la distribución sobre la concentración
 del poder económico en el mercado inmobiliario? Si $\gamma$ es bajo (cola pesada),
 unos pocos actores intermedian la mayoría de las transacciones.
@@ -92,7 +92,7 @@ EJ4_ENUNCIADO = (
     "(aquel en el que todos los pares de nodos están conectados por una trayectoria de vínculos)."
 )
 EJ4_FORMULA = r"C_i^{interm} = \sum_{s \neq i \neq t} \frac{\sigma_{st}(i)}{\sigma_{st}}"
-EJ4_INTRO = """
+EJ4_INTRO = r"""
 La **centralidad por intermediación** (*betweenness*) mide cuántas trayectorias
 más cortas entre pares de nodos pasan por un nodo dado.
 
@@ -179,7 +179,7 @@ Como cada triángulo contiene 3 triples conectados (uno por cada vértice
 "central"), el factor 3 en el numerador asegura que $C_{global}$ esté entre 0 y 1.
 """
 
-EJ7_NOTA_BARABASI = """
+EJ7_NOTA_BARABASI = r"""
 > **Nota de Daniel (Boris):** la **ecuación 21, página 45, del libro de Barabási**
 > presenta numerador y denominador *invertidos*. La fórmula correcta de
 > $C_{global}$ tiene los **triángulos en el numerador** (lo "cerrado") y los
@@ -204,7 +204,7 @@ EJ8_ENUNCIADO = (
     "¿Es la red de transacciones inmobiliarias dirigida o no dirigida? "
     "¿Es ponderada o no ponderada? Justifiquen sus respuestas."
 )
-EJ8_INTRO = """
+EJ8_INTRO = r"""
 - **Dirigida vs no dirigida:** un vínculo dirigido tiene origen y destino
   distinguibles ($A \to B \neq B \to A$). Una transacción inmobiliaria es
   inherentemente dirigida: hay un *vendedor* y un *comprador*.
@@ -231,7 +231,7 @@ EJ9_ENUNCIADO = (
     "transacciones inmobiliarias especulativas."
 )
 EJ9_FORMULA = r"\Pi(k_i) = \frac{k_i}{\sum_j k_j}"
-EJ9_INTRO = """
+EJ9_INTRO = r"""
 La hipótesis de **vinculación preferencial** dice que un nodo nuevo se conecta
 con probabilidad proporcional al grado del nodo existente: los ricos se hacen
 más ricos. El resultado son redes **libres de escala** con $p_k \sim k^{-\gamma}$
